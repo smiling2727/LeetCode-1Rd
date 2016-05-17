@@ -1,24 +1,13 @@
 public class Solution {
     public int addDigits(int num) {
-        int n = num;
-        ArrayList<Integer> digits = new ArrayList<Integer>();
+       int n = num;
        while((n/10)>0){
-        while ((n/10)>0){
-            if((n/10)>=10){
-                //int d = n%10;
-                digits.add(n%10);
-                n=n/10;
-            }
-            else if((n/10)<10){
-                digits.add(n/10);
-                n=n/10;
+       String str =  String.valueOf(n);
+       char[] ch = str.toCharArray();
+       for(int i=0;i<ch.length;i++){
+           n = n+Integer.parseInt(String.valueOf(ch[i]));
             }
         }
-        
-        for(int i =0;i<digits.size();i++){
-            n=n+digits.get(i);
-        }
-       }
        return n;
     }
 }
