@@ -1,5 +1,5 @@
 public class Solution {
-    public int[] intersection(int[] nums1, int[] nums2) {
+    public int[] intersection(int[] nums1, int[] nums2) { //o(n+m)
         Set<Integer> s = new HashSet<Integer>();
         Set<Integer> n = new HashSet<Integer>();
         for(int i : nums1){
