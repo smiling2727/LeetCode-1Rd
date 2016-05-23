@@ -1,33 +1,13 @@
 public class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
-        List<Integer> l1 = new ArrayList<Integer>();
-        List<Integer> l2 = new ArrayList<Integer>();
-        if(nums1.length<= nums2.length){
-        for(int i : nums1){
-            l1.add(i);
-        }
-        for(int i :nums2){
-            if(l1.contains(i)){
-            l2.add(i);
-            }
-        }
-        
-    }
-    else{
-        for(int i : nums2){
-            l1.add(i);
-        }
-        for(int i :nums1){
-            if(l1.contains(i)){
-            l2.add(i);
-            }
-        } 
-    }
-    
-    int a[]  = new int[l2.size()];
-    for(int i=0; i<l2.size();i++){
-        a[i] = l2.get(i);
-    }
-    return a;
+       HashMap<Integer,Integer> map  = new HashMap<Integer,Integer> (); // hashMap的key都是不一样的
+       for(int i: nums1){
+          if(map.containsKey(i)){
+              map.put(i,map.get(i)+1);
+          }
+          else {
+              map.put(i,1);
+          }
+       }
     }
 }
