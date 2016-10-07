@@ -8,7 +8,7 @@ public class repeatedDNA_187 {
         BSTree tree = new BSTree();
         List<String> rpList = new ArrayList<String>();
 
-        for(int i=0;i<s.length()-10;i++){
+        for(int i=0;i<s.length()-9;i++){
             String subStr = s.substring(i,i+10);
             //System.out.println(subStr);
             tree.insert(subStr);
