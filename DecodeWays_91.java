@@ -1,23 +1,17 @@
 public class Solution {
     public int numDecodings(String s) {
-        if(s.length()==0||Integer.parseInt(s.charAt(0)+"")<1) return 0;
-        if(s.length()==1) return 1;
-        if(Integer.parseInt(s.charAt(s.length()-1)+"")==0){
-            int last2 = Integer.parseInt(s.charAt(s.length()-2)+"");
-            if(last2>2||last2<1)return 0;
-            if(last2==2||last2==1)return helper(s.substring(0,s.length()-2),1,false);;
+        int n = s.length();
+        int[] dp = new int[n+1];
+        if(n == 0||s.charAt(0) == '0') return 0;
+        if(n < 2) return 1;
+        dp[0] = 1;
+        dp[1] = 1;
+        for(int i=2;i<=n;i++){
+            int first = Integer.parseInt(s.substring(i-1,i));
+            int second = Integer.parseInt(s.substring(i-2,i));
+            if(first>=1&&first<=9) dp[i] += dp[i-1];
+            if(second>=10&&second<=26) dp[i]+= dp[i-2];
         }
-        return helper(s,1,false);
-    }
-    private int helper(String s,int count,boolean isTwo){
-        if(s.length()<2) return count;
-        int num = Integer.parseInt(s.substring(0,2));
-        if(num==0||(num>26&&num%10==0)) return 0;
-        if(num>10&&num<=26&&num%10!=0) {
-            if(isTwo) return helper(s.substring(1,s.length()),count*2-1,true);
-            else return helper(s.substring(1,s.length()),count*2,true);
-        } 
-        else return helper(s.substring(1,s.length()),count,false);//if first 2 >26
-        //return count;
+        return dp[n];
     }
 }
